@@ -34,7 +34,7 @@ function showDashboard() {
     loadAllSections();
 }
 
-// Sidebar Logic
+// Sidebar Controls
 const sideNav = document.getElementById('sideNav');
 const navOverlay = document.getElementById('navOverlay');
 document.getElementById('menuToggle').onclick = () => { sideNav.classList.add('open'); navOverlay.classList.add('show'); };
@@ -65,14 +65,14 @@ async function loadAllSections() {
     }
 }
 
-// 1. MEMBERS (Detailed Standings + Diff Detector)
+// 1. MEMBERS (Live Standings + Diff Detector + Captain Tracking)
 async function renderMembers(league, bootstrap) {
     const el = document.getElementById("members");
     const currentGW = bootstrap.events.find(e => e.is_current)?.id || 1;
     const playerMap = {};
     bootstrap.elements.forEach(p => playerMap[p.id] = p.web_name);
 
-    // Baseline: Your Team (Using League Leader as demo baseline)
+    // Baseline: Use League Leader as 'Your Team' for Diff Detector demo
     const yourEntryId = league.standings.results[0].entry; 
     const yourData = await fetchFPL(`entry_${yourEntryId}_gw${currentGW}`, `entry/${yourEntryId}/event/${currentGW}/picks`);
     const yourPicks = yourData?.picks ? yourData.picks.map(p => p.element) : [];
@@ -81,7 +81,11 @@ async function renderMembers(league, bootstrap) {
         <div class="card" style="padding:0; overflow-x:auto;">
             <table class="fpl-table">
                 <thead><tr>
-                    <th>Manager</th><th>Risks (Only Them)</th><th>Gains (Only You)</th><th>Captain</th><th>TV</th><th style="text-align:right;">Total</th>
+                    <th>Manager</th>
+                    <th>Diffs (Risks)</th>
+                    <th>Captain (Pts)</th>
+                    <th style="text-align:center;">GW</th>
+                    <th style="text-align:right;">Total</th>
                 </tr></thead>
                 <tbody id="standingsBody"></tbody>
             </table>
@@ -94,16 +98,19 @@ async function renderMembers(league, bootstrap) {
 
         const rivalPicks = rivalData.picks.map(p => p.element);
         const risks = rivalPicks.filter(id => !yourPicks.includes(id)).slice(0, 2);
-        const gains = yourPicks.filter(id => !rivalPicks.includes(id)).slice(0, 2);
-        const captain = playerMap[rivalData.picks.find(p => p.is_captain).element];
+        const captainPick = rivalData.picks.find(p => p.is_captain);
+        const captainObj = bootstrap.elements.find(e => e.id === captainPick.element);
+        const captainPoints = (captainObj.event_points * captainPick.multiplier);
 
         standingsBody.innerHTML += `
             <tr class="league-row">
                 <td><div class="manager-name">${m.player_name}</div><div class="team-name">${m.entry_name}</div></td>
                 <td><div class="diff-tags">${risks.map(id => `<span class="tag risk">${playerMap[id]}</span>`).join('')}</div></td>
-                <td><div class="diff-tags">${gains.map(id => `<span class="tag gain">${playerMap[id]}</span>`).join('')}</div></td>
-                <td><small>©</small> <strong>${captain}</strong></td>
-                <td><div style="font-size:0.8rem; font-weight:700;">£${(rivalData.entry_history.value/10).toFixed(1)}m</div></td>
+                <td>
+                    <div style="font-weight:700;">${captainObj.web_name}</div>
+                    <div style="font-size:0.75rem; color:var(--fpl-green)">+${captainPoints} pts</div>
+                </td>
+                <td style="text-align:center;"><span class="gw-pts-pill">${m.event_total}</span></td>
                 <td style="text-align:right; font-weight:800; padding-right:15px;">${m.total}</td>
             </tr>`;
     }
@@ -137,7 +144,7 @@ async function renderCommunityXI(league, bootstrap) {
         </div>`).join("");
 }
 
-// 3. RIVAL WATCH NOTIFICATIONS
+// 3. RIVAL WATCH NOTIFICATIONS (Top 3 Managers)
 async function checkRivalTransfers(league, currentGW) {
     const top3 = league.standings.results.slice(0, 3);
     for (const m of top3) {
@@ -152,8 +159,8 @@ async function checkRivalTransfers(league, currentGW) {
 
 function showRivalToast(msg) {
     const t = document.createElement("div"); t.className = "rival-toast";
-    t.innerHTML = `<div class="toast-header"><span>RIVAL ALERT</span><span onclick="this.parentElement.parentElement.remove()">&times;</span></div><div>${msg}</div>`;
-    document.body.appendChild(t); setTimeout(() => t.remove(), 6000);
+    t.innerHTML = `<div class="toast-header"><span>RIVAL WATCH</span><span onclick="this.parentElement.parentElement.remove()">&times;</span></div><div>${msg}</div>`;
+    document.body.appendChild(t); setTimeout(() => t.remove(), 8000);
 }
 
 // 4. FIXTURE TICKER
