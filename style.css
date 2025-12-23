@@ -58,3 +58,38 @@ header { background: var(--fpl-purple); color: white; padding: 12px 20px; positi
 .secondary-btn { background: var(--fpl-navy); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-weight: 600; cursor: pointer; }
 
 @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+
+/* Rival Watch Toast */
+.rival-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--fpl-navy);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 5000;
+    min-width: 250px;
+    border-left: 5px solid var(--fpl-green);
+    animation: slideInRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.toast-body {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
