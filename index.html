@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FPL Members Area</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPL Members Area | 101712</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-<header>
-  <h1>FPL Mini-League Members Area</h1>
-  <p>League ID: 101712</p>
-  <button id="logoutBtn">Logout</button>
-</header>
+    <div id="auth-overlay">
+        <div class="login-card">
+            <h1>FPL Elite Area</h1>
+            <p>Private League 101712</p>
+            <button id="loginBtn" onclick="netlifyIdentity.open()">Sign In to Access</button>
+        </div>
+    </div>
 
-<!-- AUTH -->
-<div id="auth">
-  <h2>Members Only</h2>
-  <p>Please log in to access the dashboard.</p>
-  <button onclick="netlifyIdentity.open()">Login</button>
-</div>
+    <div id="app" style="display: none;">
+        <header>
+            <div class="header-content">
+                <h1>FPL Dashboard</h1>
+                <button id="logoutBtn" class="secondary-btn">Logout</button>
+            </div>
+            <nav>
+                <button class="nav-link active" data-tab="members">Members</button>
+                <button class="nav-link" data-tab="popular">Community XI</button>
+                <button class="nav-link" data-tab="predictions">Predictions</button>
+                <button class="nav-link" data-tab="transfers">Planner</button>
+                <button class="nav-link" data-tab="fixtures">Fixtures</button>
+            </nav>
+        </header>
 
-<!-- APP -->
-<main id="app">
-  <nav>
-    <button data-tab="members">Members</button>
-    <button data-tab="popular">Community XI</button>
-    <button data-tab="predictions">Predictions</button>
-    <button data-tab="transfers">Transfer Planner</button>
-    <button data-tab="fixtures">Fixtures</button>
-  </nav>
+        <main class="container">
+            <section id="members" class="tab-content active-tab"></section>
+            <section id="popular" class="tab-content"></section>
+            <section id="predictions" class="tab-content"></section>
+            <section id="transfers" class="tab-content"></section>
+            <section id="fixtures" class="tab-content"></section>
+        </main>
+    </div>
 
-  <section id="members" class="tab active"></section>
-  <section id="popular" class="tab"></section>
-  <section id="predictions" class="tab"></section>
-  <section id="transfers" class="tab"></section>
-  <section id="fixtures" class="tab"></section>
-</main>
-
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
