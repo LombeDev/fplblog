@@ -3,24 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <title>FPL Members Area</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-  <h1>Mini League Members Area</h1>
+  <h1>FPL Mini-League Members Area</h1>
   <p>League ID: 101712</p>
+  <button id="logoutBtn">Logout</button>
 </header>
 
-<nav>
-  <button data-tab="members">Members</button>
-  <button data-tab="popular">Popular Picks</button>
-  <button data-tab="predictions">Predictions</button>
-  <button data-tab="transfers">Transfer Planner</button>
-  <button data-tab="fixtures">Fixture Ticker</button>
-</nav>
+<!-- AUTH -->
+<div id="auth">
+  <h2>Members Only</h2>
+  <p>Please log in to access the dashboard.</p>
+  <button onclick="netlifyIdentity.open()">Login</button>
+</div>
 
-<main>
+<!-- APP -->
+<main id="app">
+  <nav>
+    <button data-tab="members">Members</button>
+    <button data-tab="popular">Community XI</button>
+    <button data-tab="predictions">Predictions</button>
+    <button data-tab="transfers">Transfer Planner</button>
+    <button data-tab="fixtures">Fixtures</button>
+  </nav>
+
   <section id="members" class="tab active"></section>
   <section id="popular" class="tab"></section>
   <section id="predictions" class="tab"></section>
@@ -28,6 +38,7 @@
   <section id="fixtures" class="tab"></section>
 </main>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
