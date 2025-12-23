@@ -1,236 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FPL & Fixtures: Weekend Blog Post</title>
-      <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* CSS from the previous response should be placed here */
-        /* For example: */
-        /* :root { ... } */
-        /* body.light-mode { ... } */
-        /* ... all other styles ... */
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>FPL Members Area</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-<body class="light-mode"> 
+<header>
+  <h1>Mini League Members Area</h1>
+  <p>League ID: 101712</p>
+</header>
 
-    <div id="new-top-nav-desktop">
-        <div class="nav-container" style="max-width: 1400px; height: 100%; align-items: stretch; position: relative;">
-            
-            <div class="main-links" style="border-right: 1px solid var(--border);">
-                <li><a href="#" class="nav-btn-text">FPL Home</a></li>
-                <li><a href="#" class="nav-btn-text">Transfers</a></li>
-                <li><a href="#" class="nav-btn-text">Stats</a></li>
-            </div>
+<nav>
+  <button data-tab="members">Members</button>
+  <button data-tab="popular">Popular Picks</button>
+  <button data-tab="predictions">Predictions</button>
+  <button data-tab="transfers">Transfer Planner</button>
+  <button data-tab="fixtures">Fixture Ticker</button>
+</nav>
 
-            <a href="#" class="desktop-logo-container">
-                <span class="desktop-logo-icon">FPL</span>
-            </a>
+<main>
+  <section id="members" class="tab active"></section>
+  <section id="popular" class="tab"></section>
+  <section id="predictions" class="tab"></section>
+  <section id="transfers" class="tab"></section>
+  <section id="fixtures" class="tab"></section>
+</main>
 
-            <div class="main-links" style="border-left: 1px solid var(--border); margin-left: auto;">
-                <li><a href="#" class="nav-btn-text">Competitions</a></li>
-                <li><a href="#" class="nav-btn-text">Matches</a></li>
-                <li>
-                    <div class="desktop-user-actions" style="display: flex; gap: 10px; margin-left: 20px;">
-                        <button class="nav-btn">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <button class="nav-btn">
-                            <div class="user-profile-orb"></div>
-                            Sign In
-                        </button>
-                    </div>
-                </li>
-            </div>
-        </div>
-    </div>
-
-
-    <main>
-        
-        <header>
-            <h2 class="highlight-accent">WEEKEND FIXTURES & FPL CAPTAINS</h2>
-            <h1>The Five Must-Watch Fixtures and Our Bold Captain Pick</h1>
-            <p style="text-align: center; color: var(--subtext); font-size: 14px; margin-bottom: 30px;">
-                By **The Green Arrow Analyst** | December 13, 2025 | 4 min read
-            </p>
-        </header>
-
-        <section class="content-section">
-
-            <div class="article-image" style="margin-bottom: 30px;">
-                <img src="https://via.placeholder.com/800x400?text=FPL+GW+17+Matchweek+Analysis" alt="Matchweek analysis graphic" style="width: 100%; border-radius: 12px; height: auto;">
-            </div>
-
-            <h2>🔥 The Spicy Fixtures You Can't Miss</h2>
-            <p>
-                This weekend offers a true feast for football fans and FPL managers alike. Forget the mid-week rotation; this is where the big teams clash, providing both massive point potential and the risk of absolute chaos. We've honed in on the five most critical matches where clean sheets will be rare and attacking returns should be plentiful.
-            </p>
-
-            <ol style="margin-left: 20px; list-style-type: decimal; padding-left: 0;">
-                <li style="margin-bottom: 25px;">
-                    <p style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">1. North London Derby: Spurs vs. Arsenal</p>
-                    <p style="font-size: 15px; color: var(--subtext); margin-bottom: 0;">
-                        **FPL Focus:** The obvious focus is on the attacking full-backs and the differential midfield forwards. Expect both teams to concede, making premium defenders a huge risk, but attackers like **Saka** and **Son** essential.
-                    </p>
-                </li>
-                <li style="margin-bottom: 25px;">
-                    <p style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">2. Bundesliga Battle: Bayern Munich vs. Borussia Dortmund</p>
-                    <p style="font-size: 15px; color: var(--subtext); margin-bottom: 0;">
-                        While not FPL relevant, this is always a goal-fest. Fantasy managers should monitor form here, as confidence carries over. **Kane**'s goal-scoring form remains impeccable and crucial for Gameweek 18.
-                    </p>
-                </li>
-                <li style="margin-bottom: 25px;">
-                    <p style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">3. Title Decider Hint: Liverpool vs. Manchester City</p>
-                    <p style="font-size: 15px; color: var(--subtext); margin-bottom: 0;">
-                        The ultimate clash. The key decision is whether to sell **Haaland** or bench him. The best FPL move might be backing Liverpool's attack, with **Salah** having an excellent record against the champions.
-                    </p>
-                </li>
-            </ol>
-            
-            <hr style="border: 0; border-top: 1px solid var(--border); margin: 30px 0;">
-
-            <h2>🎯 Captaincy Corner: The Differential Pick</h2>
-            
-            <div class="countdown-section" style="text-align: center; margin-bottom: 30px; padding: 20px; background-color: var(--top-nav-search-bg); border-radius: 12px;">
-                <h3 class="countdown-title">GW 17 DEADLINE:</h3>
-                <div class="countdown-display" id="gw-deadline-countdown">
-                    1 Day, 4 Hours, 35 Minutes
-                </div>
-            </div>
-
-            <p>
-                The consensus is locking in **Haaland** (or the template, **Salah**), but this week we're feeling bold. The fixture against a struggling bottom-half defense presents a massive opportunity for an ownership boost.
-            </p>
-            
-            <blockquote style="border-left: 5px solid var(--accent); padding-left: 15px; margin: 20px 0; font-style: italic; color: var(--subtext);">
-                "Our official Green Arrow captain pick for Gameweek 17 is the differential, in-form **Jeremy Doku** (Manchester City). At less than 5% ownership, a huge haul here could see you climb hundreds of thousands of places."
-            </blockquote>
-            
-            <p>
-                Consider a **Vice-Captain** on one of the premium forwards in the derby matches as a safe fallback, but our money is on the Man City winger to deliver this week.
-            </p>
-
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#" class="fpl-button-primary">
-                    <i class="fas fa-chart-line"></i> View Full Captaincy Analysis
-                </a>
-            </div>
-
-        </section>
-
-        <aside id="leaderboard-snapshot" class="content-section" style="margin-top: 30px;">
-            <h2>📈 Mini-League Snapshot</h2>
-            <div id="standings-list">
-                <div class="top-row">
-                    <span class="rank-number">1.</span>
-                    <span class="manager-name">The Analyzer</span>
-                    <span class="rank-change highlight-accent">2456 pts</span>
-                </div>
-                <div class="top-row">
-                    <span class="rank-number">2.</span>
-                    <span class="manager-name">The Algorithm</span>
-                    <span class="rank-change">2440 pts</span>
-                </div>
-                <div class="top-row">
-                    <span class="rank-number">3.</span>
-                    <span class="manager-name">Green Arrow Gainer</span>
-                    <span class="rank-change">2399 pts</span>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="#" class="fpl-button-secondary">
-                    Check Your Rank <i class="fas fa-chevron-right"></i>
-                </a>
-            </div>
-        </aside>
-
-    </main>
-
-    <nav id="bottom-nav">
-        <a href="#" class="nav-item active">
-            <span class="nav-highlight"></span>
-            <i class="fas fa-home"></i>
-            Home
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-highlight"></span>
-            <i class="fas fa-exchange-alt"></i>
-            Transfers
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-highlight"></span>
-            <i class="fas fa-trophy"></i>
-            Leagues
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-highlight"></span>
-            <i class="fas fa-calendar-alt"></i>
-            Fixtures
-        </a>
-        <a href="#" class="nav-item" id="more-options-btn-mobile">
-            <span class="nav-highlight"></span>
-            <i class="fas fa-ellipsis-h"></i>
-            More
-        </a>
-    </nav>
-    
-    <button id="transferFAB" title="Make Transfers Now">
-        <i class="fas fa-bolt"></i>
-    </button>
-    
-    <button id="themeToggle" onclick="toggleTheme()">
-        <i class="fas fa-sun"></i> Light Mode
-    </button>
-    
-    <button id="backToTop" title="Go to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-
-    <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-        <p>&copy; 2025 Green Arrow FPL. All rights reserved.</p>
-        <p class="disclaimer">Fantasy Premier League is a trademark of the Premier League. This is an independent fan-made analytical tool.</p>
-    </footer>
-
-    <script>
-        // Simple Theme Toggle Script
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const button = document.getElementById('themeToggle');
-            if (document.body.classList.contains('light-mode')) {
-                button.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            } else {
-                button.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-            }
-        }
-        
-        // Back to Top functionality
-        window.onscroll = function() { scrollFunction() };
-
-        function scrollFunction() {
-          const backToTop = document.getElementById("backToTop");
-          if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTop.style.display = "flex";
-          } else {
-            backToTop.style.display = "none";
-          }
-        }
-
-        document.getElementById('backToTop').onclick = function() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        };
-    </script>
-
+<script src="script.js"></script>
 </body>
 </html>
