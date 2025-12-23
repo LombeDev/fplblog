@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+// Replace the first line with this:
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 exports.handler = async (event) => {
     // 1. Get the path from the URL (e.g., bootstrap-static)
