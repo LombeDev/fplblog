@@ -48,3 +48,50 @@ nav { display: flex; overflow-x: auto; margin-top: 10px; background: rgba(0,0,0,
 .hard { background: #ff005a; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Fixture Ticker Styling */
+.ticker-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.fixture-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+}
+
+.diff-indicator {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #000;
+}
+
+.easy { background-color: #00ff87; } /* FPL Green */
+.med  { background-color: #e1e1e1; } /* Grey */
+.hard { background-color: #ff005a; } /* FPL Pink/Red */
+
+.prediction-card .stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.planner-inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.planner-inputs input {
+    flex: 1;
+    padding: 10px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+}
