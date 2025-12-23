@@ -1,6 +1,6 @@
 /* ================= CONFIGURATION ================= */
 const LEAGUE_ID = 101712;
-const PROXY_URL = "/.netlify/functions/fpl-proxy";
+const PROXY_URL = "fpl-proxy";
 
 /* ================= CACHE ENGINE ================= */
 /**
